@@ -1,7 +1,7 @@
 using System;
 using System.IO.Ports;
 
-namespace AcController
+namespace aclib
 {
     public class SerialPortDriver : IAcDriver, IDisposable
     {

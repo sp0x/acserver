@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using aclib;
 
 namespace acserver
 {
@@ -31,15 +32,15 @@ namespace acserver
             string comPort = Configuration["comPort"];
             string acModel = Configuration["acModel"];
             _acManager = new AcManager(null);
-            services.AddTransient(_acManager);
+            services.AddSingleton(_acManager);
             if(comPort!=null)
             {
                 _portDriver = new SerialPortDriver(comPort);
                 _portDriver.Connect();
                 _acManager.SetDriver(_portDriver);
                 _crAc = _acManager.CreateAc(acModel);
-                services.AddTransient(_crAc);
-                services.AddTransient(_portDriver);
+                services.AddSingleton(_crAc);
+                services.AddSingleton(_portDriver);
             }
         }
 

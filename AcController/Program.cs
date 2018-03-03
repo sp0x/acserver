@@ -2,7 +2,7 @@
 using Microsoft.Extensions.CommandLineUtils;
 using Microsoft.Extensions.Configuration;
 
-namespace AcController
+namespace aclib
 {
     class Program
     {
